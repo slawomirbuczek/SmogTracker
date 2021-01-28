@@ -1,0 +1,43 @@
+﻿@model SmogTracker.Models.DataModel
+@{
+    ViewData["Title"] = "Historia";
+    ViewData["usesLeft"] = Model.usesLeft;
+}
+
+<div class="text-center">
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Od</th>
+            <th>Do</th>
+            <th>CAQI(PM)</th>
+            <th>PM2.5</th>
+            <th>%</th>
+            <th>PM10</th>
+            <th>%</th>
+            <th>PM1</th>
+            <th>Ciśnienie</th>
+            <th>Wilgotność</th>
+            <th>Temperatura</th>
+        </tr>
+
+        @foreach (var data in @Model.history)
+        {
+    <tr>
+        <td>@data.fromDateTime</td>
+        <td>@data.tillDateTime</td>
+        <td>@data.indexes.ElementAt(0).value</td>
+        <td>@data.values.ElementAt(1).value</td>
+        <td>@data.standards.ElementAt(0).percent</td>
+        <td>@data.values.ElementAt(2).value</td>
+        <td>@data.standards.ElementAt(1).percent</td>
+        <td>@data.values.ElementAt(0).value</td>
+        <td>@data.values.ElementAt(3).value</td>
+        <td>@data.values.ElementAt(4).value</td>
+        <td>@data.values.ElementAt(5).value</td>
+    </tr>
+        }
+
+    </table>
+
+</div>

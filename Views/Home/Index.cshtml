@@ -1,0 +1,36 @@
+﻿@model SmogTracker.Models.DataModel
+@{
+    ViewData["Title"] = "Strona główna";
+    ViewData["usesLeft"] = Model.usesLeft;
+}
+
+<div class="text-center">
+
+    <h1>Aktualna prognoza zanieczyszczeń</h1>
+    <br />
+    <p>Politechnika Krakowska im. Tadeusza Kościuszki - Wydział Mechaniczny</p>
+    <br />
+    <p><h3>@Model.current.indexes.ElementAt(0).value</h3>CAQI (PM)</p>
+    <p>@Model.current.indexes.ElementAt(0).description</p>
+    <p><i>@Model.current.indexes.ElementAt(0).advice</i></p>
+    <br />
+    <p>
+        <b>PM10</b> @Model.current.values.ElementAt(2).value µg/m³
+        @Model.current.standards.ElementAt(1).percent%
+    </p>
+    <br />
+    <p>
+        <b>PM2.5</b> @Model.current.values.ElementAt(1).value µg/m³
+        @Model.current.standards.ElementAt(0).percent%
+    </p>
+    <br />
+    <p><b>PM1</b> @Model.current.values.ElementAt(0).value µg/m³</p>
+    <br />
+    <p><b>Ciśnienie</b> @Model.current.values.ElementAt(3).value hPa</p>
+    <br />
+    <p><b>Wilgotność</b> @Model.current.values.ElementAt(4).value%</p>
+    <br />
+    <p><b>Temperatura</b> @Model.current.values.ElementAt(5).value °C</p>
+    <br />
+    Godzina pomiaru: @Model.timeOfMeasurement
+</div>
